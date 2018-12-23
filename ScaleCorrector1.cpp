@@ -54,7 +54,7 @@ void loop(){
 			POT_PLUS.twitch(10, 1000);
 			CORE.reset();
 			core_value.offset = hx711.read();
-			/*POT_PLUS.setResistance(0xFF);
+			POT_PLUS.setResistance(0xFF);
 			while(1){
 				if (remoteController.readBitsFromPort()){
 					switch(remoteController.getBits()){
@@ -65,7 +65,7 @@ void loop(){
 						break;
 					}
 				}
-			}*/
+			}
 		break;	
 	}
 	

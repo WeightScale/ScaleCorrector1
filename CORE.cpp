@@ -57,6 +57,7 @@ void CoreClass::doCalibration(){
 	core_value.l_adc -= core_value.offset;
 	float fp = 0,fm = 0, f = 0;
 	for(int i=0; i<FACTOR_MAX; i++){
+#if FACTOR_PLAN == FACTOR_5_10_15_20
 		switch(i){
 			case 0:
 				fp=0.075;
@@ -74,7 +75,23 @@ void CoreClass::doCalibration(){
 				fp=0.26;
 				fm=-0.35;
 			break;
-		}		
+		}
+#else if FACTOR_PLAN == FACTOR_1_3_5
+		switch(i){
+			case 0:
+				fp=0.01;
+				fm=-0.01;
+			break;
+			case 1:
+				fp=0.03;
+				fm=-0.03;
+			break;
+			case 2:
+				fp=0.05;
+				fm=-0.05;
+			break;
+		}
+#endif		
 		//fp+=0.05;
 		//fm+=-0.075;
 		//core_value.factorP[i] = float(float(core_value.corrMtoP)* f) / float(core_value.l_adc);
@@ -226,7 +243,7 @@ void CoreClass::doPlus(){
 			switch(remoteController.getBits()){
 				case ACTION_BUTTON_A:
 					int t;
-					if (++i >3){
+					if (++i >=FACTOR_MAX){
 						i = 0;
 					}
 					t = (i+1) * 10;
@@ -270,7 +287,7 @@ void CoreClass::doMinus(){
 			switch(remoteController.getBits()){
 				case ACTION_BUTTON_B:
 				int t;
-					if (++i >3){
+					if (++i >=FACTOR_MAX){
 						i = 0;
 					}
 					t = (i+1) * 10;

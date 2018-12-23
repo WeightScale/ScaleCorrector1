@@ -15,6 +15,18 @@
 #define FACTOR_MAX 4
 #define OFFSET_HX711 0.000031
 
+#define FACTOR_5_10_15_20			10
+#define FACTOR_1_3_5				20
+
+#define FACTOR_PLAN					FACTOR_1_3_5
+//#define FACTOR_PLAN					FACTOR_5_10_15_20
+
+#if FACTOR_PLAN == FACTOR_1_3_5
+	#define FACTOR_MAX 3
+#else if FACTOR_PLAN == FACTOR_5_10_15_20
+	#define FACTOR_MAX 4
+#endif
+
 typedef struct{
 	long offset  ;					//< код ацп нулевой вес
 	long l_adc;
