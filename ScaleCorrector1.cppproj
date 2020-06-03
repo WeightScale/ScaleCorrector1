@@ -5,7 +5,7 @@
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
     <ProjectGuid>{67c28c4b-4bb9-4a96-acb0-f95e95839e30}</ProjectGuid>
-    <avrdevice>ATmega2560</avrdevice>
+    <avrdevice>atmega328pb</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
     <Language>CPP</Language>
@@ -19,7 +19,7 @@
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <OverrideVtorValue>exception_table</OverrideVtorValue>
-    <eraseonlaunchrule>1</eraseonlaunchrule>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
     <ProgFlashFromRam>true</ProgFlashFromRam>
     <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <CacheFlash>true</CacheFlash>
@@ -33,7 +33,7 @@
         <documentation help="" />
         <offline-documentation help="" />
         <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.34.1" />
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.38.0" />
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
@@ -42,21 +42,32 @@
     <EraseKey />
     <avrtool>com.atmel.avrdbg.tool.jtagice3plus</avrtool>
     <avrtoolserialnumber>J30200019973</avrtoolserialnumber>
-    <avrdeviceexpectedsignature>0x1E940B</avrdeviceexpectedsignature>
+    <avrdeviceexpectedsignature>0x1E950F</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_jtagice3plus>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>200000</JtagDbgClock>
+          <JtagDbgClock>0</JtagDbgClock>
           <IspClock>125000</IspClock>
         </InterfaceProperties>
-        <InterfaceName>debugWIRE</InterfaceName>
+        <InterfaceName>ISP</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.jtagice3plus</ToolType>
       <ToolNumber>J30200019973</ToolNumber>
       <ToolName>JTAGICE3</ToolName>
     </com_atmel_avrdbg_tool_jtagice3plus>
-    <avrtoolinterface>debugWIRE</avrtoolinterface>
-    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
+    <avrtoolinterface>ISP</avrtoolinterface>
+    <avrtoolinterfaceclock>125000</avrtoolinterfaceclock>
+    <com_atmel_avrdbg_tool_jtagicemkii>
+      <ToolOptions>
+        <InterfaceProperties>
+          <JtagDbgClock>200000</JtagDbgClock>
+        </InterfaceProperties>
+        <InterfaceName>JTAG</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.jtagicemkii</ToolType>
+      <ToolNumber>00A000003655</ToolNumber>
+      <ToolName>JTAGICE mkII</ToolName>
+    </com_atmel_avrdbg_tool_jtagicemkii>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -70,28 +81,32 @@
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>ARDUINO=10803</Value>
+      <Value>__AVR_ATmega328pb__</Value>
+      <Value>__AVR_ATmega328PB__</Value>
+      <Value>ARDUINO=10809</Value>
       <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
-      <Value>F_CPU={build.f_cpu}</Value>
-      <Value>ARDUINO_AVR_ATmega168</Value>
+      <Value>ARDUINO_AVR_ATmega328</Value>
       <Value>ARDUINO_ARCH_AVR</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../ScaleCorrector1</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src/utility</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Users/Kostya/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles/travis-ci</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/pb-variant</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include/avr</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
@@ -102,28 +117,32 @@
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>ARDUINO=10803</Value>
+      <Value>__AVR_ATmega328pb__</Value>
+      <Value>__AVR_ATmega328PB__</Value>
+      <Value>ARDUINO=10809</Value>
       <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
-      <Value>F_CPU={build.f_cpu}</Value>
-      <Value>ARDUINO_AVR_ATmega168</Value>
+      <Value>ARDUINO_AVR_ATmega328</Value>
       <Value>ARDUINO_ARCH_AVR</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../ScaleCorrector1</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src/utility</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Users/Kostya/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles/travis-ci</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/pb-variant</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include/avr</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
@@ -138,102 +157,104 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries;C:/Users/Kostya/Documents/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/variants/eightanaloginputs;../../../ScaleCorrector1;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src/utility;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries;C:/Users/Kostya/Documents/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/variants/eightanaloginputs;../../../ScaleCorrector1;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include/avr;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/pb-variant;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
-        <arduino.board.name>MiniCore_168</arduino.board.name>
-        <arduino.board.desc>ATmega168</arduino.board.desc>
-        <arduino.board.property_bag>name=ATmega168
+        <arduino.board.name>MiniCore_328</arduino.board.name>
+        <arduino.board.desc>ATmega328</arduino.board.desc>
+        <arduino.board.property_bag>name=ATmega328
 upload.tool=avrdude
-upload.maximum_size=15872
-upload.maximum_data_size=1024
+upload.maximum_data_size=2048
 bootloader.tool=avrdude
 bootloader.unlock_bits=0x3f
 bootloader.lock_bits=0x0f
 build.core=MCUdude_corefiles
-build.board=AVR_ATmega168
-menu.bootloader.true=Yes
-menu.bootloader.true.upload.maximum_size=15872
-menu.bootloader.true.upload.protocol=arduino
-menu.bootloader.true.bootloader.extended_fuses=0xfc
-menu.bootloader.true.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}.hex
-menu.bootloader.false=No
-menu.bootloader.false.upload.maximum_size=16384
-menu.bootloader.false.bootloader.extended_fuses=0xfd
-menu.bootloader.false.bootloader.file=empty/empty.hex
-menu.variant.modelP=168P / 168PA
+build.board=AVR_ATmega328
+menu.bootloader.uart0=Yes (UART0)
+menu.bootloader.uart0.upload.maximum_size=32256
+menu.bootloader.uart0.upload.protocol=arduino
+menu.bootloader.uart0.upload.port=UART0
+menu.bootloader.uart0.bootloader.high_fuses=0xd6
+menu.bootloader.uart0.bootloader.file=optiboot_flash/bootloaders/{build.mcu}/{build.f_cpu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}.hex
+menu.bootloader.uart1=Yes (UART1 328PB only)
+menu.bootloader.uart1.upload.maximum_size=32256
+menu.bootloader.uart1.upload.protocol=arduino
+menu.bootloader.uart1.upload.port=UART1
+menu.bootloader.uart1.bootloader.high_fuses=0xd6
+menu.bootloader.uart1.bootloader.file=optiboot_flash/bootloaders/{build.mcu}/{build.f_cpu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}.hex
+menu.bootloader.no_bootloader=No bootloader
+menu.bootloader.no_bootloader.upload.maximum_size=32768
+menu.bootloader.no_bootloader.bootloader.high_fuses=0xd7
+menu.bootloader.no_bootloader.bootloader.file=empty/empty.hex
+menu.variant.modelP=328P / 328PA
 menu.variant.modelP.bootloader.cksel_bits=0111
+menu.variant.modelP.bootloader.cfd_bit=1
 menu.variant.modelP.build.variant=standard
-menu.variant.modelP.build.mcu=atmega168p
-menu.variant.modelNonP=168 / 168A
+menu.variant.modelP.build.mcu=atmega328p
+menu.variant.modelNonP=328 / 328A
 menu.variant.modelNonP.bootloader.cksel_bits=0111
+menu.variant.modelNonP.bootloader.cfd_bit=1
 menu.variant.modelNonP.build.variant=standard
-menu.variant.modelNonP.build.mcu=atmega168
-menu.variant.modelPB=168PB
+menu.variant.modelNonP.build.mcu=atmega328
+menu.variant.modelPB=328PB
 menu.variant.modelPB.bootloader.cksel_bits=1111
+menu.variant.modelPB.bootloader.cfd_bit=0
 menu.variant.modelPB.build.variant=pb-variant
-menu.variant.modelPB.build.mcu=atmega168pb
-menu.BOD.2v7=2.7v
-menu.BOD.2v7.bootloader.high_fuses=0xd5
-menu.BOD.4v3=4.3v
-menu.BOD.4v3.bootloader.high_fuses=0xd4
-menu.BOD.1v8=1.8v
-menu.BOD.1v8.bootloader.high_fuses=0xd6
-menu.BOD.disabled=Disabled
-menu.BOD.disabled.bootloader.high_fuses=0xd7
-menu.LTO.Os=Disabled (default)
+menu.variant.modelPB.build.mcu=atmega328pb
+menu.BOD.2v7=BOD 2.7V
+menu.BOD.2v7.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}101
+menu.BOD.4v3=BOD 4.3V
+menu.BOD.4v3.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}100
+menu.BOD.1v8=BOD 1.8V
+menu.BOD.1v8.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}110
+menu.BOD.disabled=BOD  disabled
+menu.BOD.disabled.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}111
+menu.LTO.Os=LTO disabled
 menu.LTO.Os.compiler.c.extra_flags=
 menu.LTO.Os.compiler.c.elf.extra_flags=
 menu.LTO.Os.compiler.cpp.extra_flags=
 menu.LTO.Os.ltoarcmd=avr-ar
-menu.LTO.Os_flto=Enabled
-menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+menu.LTO.Os_flto=LTO enabled
+menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 menu.clock.16MHz_external=16 MHz external
-menu.clock.16MHz_external.upload.port=UART0
 menu.clock.16MHz_external.upload.speed=115200
 menu.clock.16MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.16MHz_external.build.f_cpu=16000000L
 menu.clock.20MHz_external=20 MHz external
-menu.clock.20MHz_external.upload.port=UART0
 menu.clock.20MHz_external.upload.speed=115200
 menu.clock.20MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.20MHz_external.build.f_cpu=20000000L
 menu.clock.18_432MHz_external=18.432 MHz external
-menu.clock.18_432MHz_external.upload.port=UART0
 menu.clock.18_432MHz_external.upload.speed=115200
 menu.clock.18_432MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.18_432MHz_external.build.f_cpu=18432000L
 menu.clock.12MHz_external=12 MHz external
-menu.clock.12MHz_external.upload.port=UART0
 menu.clock.12MHz_external.upload.speed=57600
 menu.clock.12MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.12MHz_external.build.f_cpu=12000000L
 menu.clock.8MHz_external=8 MHz external
-menu.clock.8MHz_external.upload.port=UART0
 menu.clock.8MHz_external.upload.speed=38400
 menu.clock.8MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.8MHz_external.build.f_cpu=8000000L
 menu.clock.8MHz_internal=8 MHz internal
-menu.clock.8MHz_internal.upload.port=UART0
 menu.clock.8MHz_internal.upload.speed=38400
 menu.clock.8MHz_internal.bootloader.low_fuses=0xe2
 menu.clock.8MHz_internal.build.f_cpu=8000000L
 menu.clock.1MHz_internal=1 MHz internal
-menu.clock.1MHz_internal.upload.port=UART0
 menu.clock.1MHz_internal.upload.speed=9600
 menu.clock.1MHz_internal.bootloader.low_fuses=0x62
 menu.clock.1MHz_internal.build.f_cpu=1000000L
 runtime.ide.path=C:\Program Files (x86)\Arduino
 runtime.os=windows
-build.system.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1\system
-runtime.ide.version=10803
+build.system.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3\system
+runtime.ide.version=10809
 target_package=MiniCore
 target_platform=avr
 runtime.hardware.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr
-originalid=168
+originalid=328
 intellisense.tools.path={runtime.tools.avr-gcc.path}\
 intellisense.include.paths={intellisense.tools.path}avr\include;{intellisense.tools.path}avr\include\avr;{intellisense.tools.path}lib\gcc\avr\4.8.1\include;{intellisense.tools.path}lib\gcc\avr\4.9.2\include;{intellisense.tools.path}lib\gcc\avr\4.9.3\include;
 tools.atprogram.cmd.path=%AVRSTUDIO_EXE_PATH%\atbackend\atprogram
@@ -247,7 +268,18 @@ tools.atprogram.erase.params.quiet=-q
 tools.atprogram.bootloader.params.verbose=-v
 tools.atprogram.bootloader.params.quiet=-q
 tools.atprogram.bootloader.pattern="{cmd.path}" -d {build.mcu} {bootloader.verbose}  program -c -f "{runtime.ide.path}\hardware\arduino\avr\bootloaders\{bootloader.file}"
-version=2.0.0
+ide.compiler_flags_no_opt=-Og
+tools.gdbstub.cmd=avr-gdb.exe
+tools.gdbstub.path={runtime.tools.avr-gcc.path}/bin
+tools.gdbstub.debug.args="{{{build.path}/{build.project_name}.elf}}" -ex "target remote \\.\{serial.port}"
+debug_menu.hwdebugger.gdbstub=GDB Stub
+debug_menu.hwdebugger.gdbstub.debug.tool=gdbstub
+meta_gdbstub.sentence=This debugger requires the avr-debugger library (by Jan Dolinay) be included in the project (install via Library Manager or from GitHub).
+meta_gdbstub.comment=To use this debugger, include the avr-debugger library, add 'debug_init();' to the setup(), and 'breakpoint();' to the top of 'loop()'. Set vMicro &gt; Debugger &gt; 'Compiler Optimization' to 'No Project', 'No Project + Libraries' or 'None' when debugging (NOTE: This might cause compilation errors with certain code such as HardwareSerial.)
+meta_gdbstub.image.connect=https://www.visualmicro.com/pics/Debug-Help-Uno_USBOnly.png
+meta_gdbstub.image.operation=https://www.visualmicro.com/pics/Debug-Break-Uno-GDBStub-VSOnly.png
+meta_gdbstub.reference.usage.url=https://www.visualmicro.com/page/User-Guide.aspx?doc=Arduino-gdb-Tutorial.html
+version=2.0.3
 compiler.warning_flags=-w
 compiler.warning_flags.none=-w
 compiler.warning_flags.default=
@@ -316,7 +348,7 @@ tools.avrdude.bootloader.pattern="{cmd.path}" "-C{config.path}" -v -p{build.mcu}
 tools.avrdude_remote.upload.pattern=/usr/bin/run-avrdude /tmp/sketch.hex {upload.verbose} -p{build.mcu}
 build.usb_manufacturer="Unknown"
 build.usb_flags=-DUSB_VID={build.vid} -DUSB_PID={build.pid} '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'
-vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\voixllox.vig\Micro Platforms\arduino16x
+vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\pwm1uafe.upm\Micro Platforms\arduino16x
 tools.avrdude.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
 tools.avrdude.program.verify=
 tools.avrdude.upload.network_pattern="{network_cmd}" -address {serial.port} -port {upload.network.port} -sketch "{build.path}/{build.project_name}.hex" -upload {upload.network.endpoint_upload} -sync {upload.network.endpoint_sync} -reset {upload.network.endpoint_reset} -sync_exp {upload.network.sync_return}
@@ -357,12 +389,20 @@ parallel.program.tool=avrdude
 parallel.program.extra_params=-F
 arduinoasisp.name=Arduino as ISP
 arduinoasisp.communication=serial
-arduinoasisp.protocol=arduino
+arduinoasisp.protocol=stk500v1
 arduinoasisp.speed=19200
-arduinoasisp.program.protocol=arduino
+arduinoasisp.program.protocol=stk500v1
 arduinoasisp.program.speed=19200
 arduinoasisp.program.tool=avrdude
 arduinoasisp.program.extra_params=-P{serial.port} -b{program.speed}
+arduinoasispatmega32u4.name=Arduino as ISP (ATmega32U4)
+arduinoasispatmega32u4.communication=serial
+arduinoasispatmega32u4.protocol=arduino
+arduinoasispatmega32u4.speed=19200
+arduinoasispatmega32u4.program.protocol=arduino
+arduinoasispatmega32u4.program.speed=19200
+arduinoasispatmega32u4.program.tool=avrdude
+arduinoasispatmega32u4.program.extra_params=-P{serial.port} -b{program.speed}
 usbGemma.name=Arduino Gemma
 usbGemma.protocol=arduinogemma
 usbGemma.program.tool=avrdude
@@ -407,28 +447,48 @@ micronucleusprog.communication=usb
 micronucleusprog.protocol=micronucleus
 micronucleusprog.program.tool={runtime.tools.micronucleus.path}/micronucleus
 micronucleusprog.program.extra_params=-Pusb
-runtime.tools.avr-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
-runtime.tools.avr-gcc-5.4.0-atmel3.6.1-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
-runtime.tools.avrdude.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino14
-runtime.tools.avrdude-6.3.0-arduino14.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino14
-runtime.tools.arduinoOTA.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.2.1
+runtime.tools.avr-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino5
+runtime.tools.avr-gcc-7.3.0-atmel3.6.1-arduino5.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino5
+runtime.tools.avrdude.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17
+runtime.tools.avrdude-6.3.0-arduino17.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17
+runtime.tools.arduinoOTA.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.3.0
+runtime.tools.arduinoOTA-1.3.0.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.3.0
+runtime.tools.arduinoOTA-1.1.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\tools\arduinoOTA\1.1.1
 runtime.tools.arduinoOTA-1.2.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.2.1
-runtime.tools.arduinoOTA-1.1.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.1.1
-runtime.tools.avrdude-6.3.0-arduino9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino9
+runtime.tools.avrdude-6.3.0-arduino14.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino14
+runtime.tools.avrdude-6.3.0-arduino9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\tools\avrdude\6.3.0-arduino9
 runtime.tools.avr-gcc-4.8.1-arduino5.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.8.1-arduino5
-runtime.tools.avr-gcc-4.9.2-atmel3.5.4-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.4-arduino2
-runtime.tools.esptool.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\0.4.13
+runtime.tools.avr-gcc-4.9.2-atmel3.5.4-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\tools\avr-gcc\4.9.2-atmel3.5.4-arduino2
+runtime.tools.avr-gcc-5.4.0-atmel3.6.1-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
+runtime.tools.CMSIS.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\CMSIS\5.5.1
+runtime.tools.CMSIS-5.5.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\CMSIS\5.5.1
+runtime.tools.esptool.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\2.5.0-3-20ed2b9
+runtime.tools.esptool_py.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\esptool_py\2.6.1
+runtime.tools.esptool_py-2.6.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\esptool_py\2.6.1
 runtime.tools.esptool-0.4.13.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\0.4.13
+runtime.tools.esptool-2.3.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\esptool\2.3.1
+runtime.tools.esptool-2.5.0-3-20ed2b9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\2.5.0-3-20ed2b9
 runtime.tools.micronucleus.path=C:\Users\Kostya\AppData\Local\arduino15\packages\digistump\tools\micronucleus\2.0a4
 runtime.tools.micronucleus-2.0a4.path=C:\Users\Kostya\AppData\Local\arduino15\packages\digistump\tools\micronucleus\2.0a4
-runtime.tools.mkspiffs.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\0.2.0
+runtime.tools.mkspiffs.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\2.5.0-3-20ed2b9
 runtime.tools.mkspiffs-0.2.0.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\0.2.0
-runtime.tools.xtensa-lx106-elf-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2
+runtime.tools.mkspiffs-0.2.3.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\mkspiffs\0.2.3
+runtime.tools.mkspiffs-2.5.0-3-20ed2b9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\2.5.0-3-20ed2b9
+runtime.tools.python.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\python\3.7.2-post1
+runtime.tools.python-3.7.2-post1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\python\3.7.2-post1
+runtime.tools.STM32Tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\STM32Tools\1.3.2
+runtime.tools.STM32Tools-1.3.2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\STM32Tools\1.3.2
+runtime.tools.xpack-arm-none-eabi-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\xpack-arm-none-eabi-gcc\9.2.1-1.1
+runtime.tools.xpack-arm-none-eabi-gcc-9.2.1-1.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\xpack-arm-none-eabi-gcc\9.2.1-1.1
+runtime.tools.xtensa-esp32-elf-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0
+runtime.tools.xtensa-esp32-elf-gcc-1.22.0-80-g6c4433a-5.2.0.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0
+runtime.tools.xtensa-lx106-elf-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\2.5.0-3-20ed2b9
 runtime.tools.xtensa-lx106-elf-gcc-1.20.0-26-gb404fb9-2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2
-runtime.vm.boardinfo.id=MiniCore_168
-runtime.vm.boardinfo.name=MiniCore_168
-runtime.vm.boardinfo.desc=ATmega168
-runtime.vm.boardinfo.src_location=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1
+runtime.tools.xtensa-lx106-elf-gcc-2.5.0-3-20ed2b9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\2.5.0-3-20ed2b9
+runtime.vm.boardinfo.id=MiniCore_328
+runtime.vm.boardinfo.name=MiniCore_328
+runtime.vm.boardinfo.desc=ATmega328
+runtime.vm.boardinfo.src_location=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3
 ide.hint=Use installed IDE. Provides built-in hardware, reference/help and libraries.
 ide.location.key=Arduino16x
 ide.location.ide.winreg=Arduino 1.6.x Application
@@ -472,23 +532,40 @@ ssh.user.name=root
 ssh.user.default.password=arduino
 ssh.host.wwwfiles.path=/www/sd
 build.working_directory={runtime.ide.path}\java\bin
+ide.debug_menu.debugger_type=Debug
+ide.debug_menu.debugger_type.none=Off
+ide.debug_menu.none.debug.tool=no_debug
+ide.debug_menu.debugger_type.universal=Serial
+ide.debug_menu.universal.debug.tool=auto
+ide.debug_menu.debugger_type.hwdebugger=Hardware
+ide.debug_menu.hwdebugger=Debugger
+ide.debug_menu.hwdebugger.custom_debugger=Manual/Custom
+ide.debug_menu.hwdebugger.custom_debugger.debug.tool=dbg_external
+ide.meta_custom_debugger.sentence=Provides a build that includes debug defines and will launch a custom debugger if one is provided.
+ide.meta_custom_debugger.paragraph=This is option is for advanced use. It is recommended that a pre-configured debugger be selected when available in this list. Usage: Optionally add a customer debugger to the project. A 'debugger_launch.json' file shares the same command syntax that is used by the VsCode debugger. Custom debuggers can be targeted at a board and/or variant and/or configuration name. IE: [variant].[configuration_name][.]debugger_launch.json
+ide.meta_custom_debugger.reference.usage.url=https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md#customlaunchsetupcommands
+ide.meta_custom_debugger.reference.connect.url=https://docs.microsoft.com/en-us/visualstudio/debugger/create-custom-views-of-native-objects?view=vs-2019
+ide.debug_menu.vm_disable_optimization=Disable Optimization
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_default=Default Optimization
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_proj=No Project  Optimization
+ide.debug_menu.vm_disable_opt_proj.vm_disable_opt_project={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_proj_libs=No Project + Libraries Optimization
+ide.debug_menu.vm_disable_opt_proj_libs.vm_disable_opt_project={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_opt_proj_libs.vm_disable_opt_libraries={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_all=No Optimization
+ide.meta_vm_disable_opt_all.sentence=Disable compiler optimization for all sources:- Project, Library and Platform.
+ide.meta_vm_disable_opt_all.comment=After switching between 'No Optimization' and other optimization values, please click "Solution Clean" or switch off (or cycle) 'vMicro&gt;Compiler&gt;Shared Cache For Cores'. NOTE: Changing optimization settings can cause build errors or result in overly large programs.
+ide.debug_menu.vm_disable_opt_all.vm_disable_opt_project={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_opt_all.vm_disable_opt_libraries={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_opt_all.vm_disable_opt_core={ide.compiler_flags_no_opt}
 ide.appid=arduino16x
 location.sketchbook=C:\Users\Kostya\Documents\Arduino
-build.core.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1\cores\MCUdude_corefiles
+build.core.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3\cores\MCUdude_corefiles
 vm.core.include=arduino.h
-vm.boardsource.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1
-runtime.platform.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1
+vm.boardsource.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3
+runtime.platform.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3
 vm.platformname.name=avr
 build.arch=AVR
-build.project_name=ScaleCorrector1.ino
-build.project_path=C:\Users\Kostya\Documents\Solution\Scale Corrector\Arduino\ScaleCorrector1
-sketch_path=C:\Users\Kostya\Documents\Solution\Scale Corrector\Arduino\ScaleCorrector1
-ProjectDir=C:\Users\Kostya\Documents\Solution\Scale Corrector\Arduino\ScaleCorrector1\
-build.path=C:\Users\Kostya\AppData\Local\Temp\VMBuilds\ScaleCorrector1\pro_8MHzatmega168\Debug
-builder.noino=false
-build.architecture=5.4.0-atmel3.6.1-arduino2
-vmresolved.compiler.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2\bin\
-vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
 </arduino.board.property_bag>
         <arduino.build.mcu>
         </arduino.build.mcu>
@@ -499,7 +576,8 @@ vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\t
         </arduino.upload.protocol>
         <arduino.upload.speed>
         </arduino.upload.speed>
-        <arduino.upload.maximum_size>15872</arduino.upload.maximum_size>
+        <arduino.upload.maximum_size>
+        </arduino.upload.maximum_size>
         <visualmicro.application.name>arduino16x</visualmicro.application.name>
         <visualmicro.package.name>MiniCore</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
@@ -507,6 +585,8 @@ vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\t
         <vm.programmer_name>atmel_studio_device_programming</vm.programmer_name>
         <custom_MiniCore_168_bootloader>false</custom_MiniCore_168_bootloader>
         <custom_MiniCore_168_variant>modelP</custom_MiniCore_168_variant>
+        <custom_MiniCore_328_clock>8MHz_internal</custom_MiniCore_328_clock>
+        <custom_MiniCore_328_BOD>disabled</custom_MiniCore_328_BOD>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -522,28 +602,32 @@ vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\t
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>ARDUINO=10803</Value>
+      <Value>__AVR_ATmega328pb__</Value>
+      <Value>__AVR_ATmega328PB__</Value>
+      <Value>ARDUINO=10809</Value>
       <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
-      <Value>F_CPU={build.f_cpu}</Value>
-      <Value>ARDUINO_AVR_ATmega168</Value>
+      <Value>ARDUINO_AVR_ATmega328</Value>
       <Value>ARDUINO_ARCH_AVR</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../ScaleCorrector1</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src/utility</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Users/Kostya/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles/travis-ci</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/pb-variant</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include/avr</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
@@ -554,28 +638,32 @@ vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\t
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>ARDUINO=10803</Value>
+      <Value>__AVR_ATmega328pb__</Value>
+      <Value>__AVR_ATmega328PB__</Value>
+      <Value>ARDUINO=10809</Value>
       <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=8000000L</Value>
       <Value>__AVR__</Value>
-      <Value>F_CPU={build.f_cpu}</Value>
-      <Value>ARDUINO_AVR_ATmega168</Value>
+      <Value>ARDUINO_AVR_ATmega328</Value>
       <Value>ARDUINO_ARCH_AVR</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
       <Value>../../../ScaleCorrector1</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src/utility</Value>
       <Value>C:/Program Files (x86)/Arduino/libraries</Value>
       <Value>C:/Users/Kostya/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles/travis-ci</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/pb-variant</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include/avr</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
@@ -590,102 +678,104 @@ vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\t
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries;C:/Users/Kostya/Documents/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/variants/eightanaloginputs;../../../ScaleCorrector1;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src/utility;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>C:/Program Files (x86)/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries;C:/Users/Kostya/Documents/Arduino/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/variants/eightanaloginputs;../../../ScaleCorrector1;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr/;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.20/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/1.0.4/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.0/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.1/libraries/Wire/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/avr/include/avr;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/variants/eightanaloginputs;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.23/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/cores/MCUdude_corefiles/travis-ci;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/avr/include/avr;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.8.1/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.2/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/lib/gcc/avr/4.9.3/include;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/libraries;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/cores/arduino;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/variants/standard;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/libraries/Wire/src;C:/Users/Kostya/AppData/Local/arduino15/packages/arduino/hardware/avr/1.8.2/libraries/Wire/src/utility;C:/Users/Kostya/AppData/Local/arduino15/packages/MiniCore/hardware/avr/2.0.3/variants/pb-variant;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
       <VisualMicroSettings>
-        <arduino.board.name>MiniCore_168</arduino.board.name>
-        <arduino.board.desc>ATmega168</arduino.board.desc>
-        <arduino.board.property_bag>name=ATmega168
+        <arduino.board.name>MiniCore_328</arduino.board.name>
+        <arduino.board.desc>ATmega328</arduino.board.desc>
+        <arduino.board.property_bag>name=ATmega328
 upload.tool=avrdude
-upload.maximum_size=15872
-upload.maximum_data_size=1024
+upload.maximum_data_size=2048
 bootloader.tool=avrdude
 bootloader.unlock_bits=0x3f
 bootloader.lock_bits=0x0f
 build.core=MCUdude_corefiles
-build.board=AVR_ATmega168
-menu.bootloader.true=Yes
-menu.bootloader.true.upload.maximum_size=15872
-menu.bootloader.true.upload.protocol=arduino
-menu.bootloader.true.bootloader.extended_fuses=0xfc
-menu.bootloader.true.bootloader.file=optiboot_flash/{build.mcu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}.hex
-menu.bootloader.false=No
-menu.bootloader.false.upload.maximum_size=16384
-menu.bootloader.false.bootloader.extended_fuses=0xfd
-menu.bootloader.false.bootloader.file=empty/empty.hex
-menu.variant.modelP=168P / 168PA
+build.board=AVR_ATmega328
+menu.bootloader.uart0=Yes (UART0)
+menu.bootloader.uart0.upload.maximum_size=32256
+menu.bootloader.uart0.upload.protocol=arduino
+menu.bootloader.uart0.upload.port=UART0
+menu.bootloader.uart0.bootloader.high_fuses=0xd6
+menu.bootloader.uart0.bootloader.file=optiboot_flash/bootloaders/{build.mcu}/{build.f_cpu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}.hex
+menu.bootloader.uart1=Yes (UART1 328PB only)
+menu.bootloader.uart1.upload.maximum_size=32256
+menu.bootloader.uart1.upload.protocol=arduino
+menu.bootloader.uart1.upload.port=UART1
+menu.bootloader.uart1.bootloader.high_fuses=0xd6
+menu.bootloader.uart1.bootloader.file=optiboot_flash/bootloaders/{build.mcu}/{build.f_cpu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}.hex
+menu.bootloader.no_bootloader=No bootloader
+menu.bootloader.no_bootloader.upload.maximum_size=32768
+menu.bootloader.no_bootloader.bootloader.high_fuses=0xd7
+menu.bootloader.no_bootloader.bootloader.file=empty/empty.hex
+menu.variant.modelP=328P / 328PA
 menu.variant.modelP.bootloader.cksel_bits=0111
+menu.variant.modelP.bootloader.cfd_bit=1
 menu.variant.modelP.build.variant=standard
-menu.variant.modelP.build.mcu=atmega168p
-menu.variant.modelNonP=168 / 168A
+menu.variant.modelP.build.mcu=atmega328p
+menu.variant.modelNonP=328 / 328A
 menu.variant.modelNonP.bootloader.cksel_bits=0111
+menu.variant.modelNonP.bootloader.cfd_bit=1
 menu.variant.modelNonP.build.variant=standard
-menu.variant.modelNonP.build.mcu=atmega168
-menu.variant.modelPB=168PB
+menu.variant.modelNonP.build.mcu=atmega328
+menu.variant.modelPB=328PB
 menu.variant.modelPB.bootloader.cksel_bits=1111
+menu.variant.modelPB.bootloader.cfd_bit=0
 menu.variant.modelPB.build.variant=pb-variant
-menu.variant.modelPB.build.mcu=atmega168pb
-menu.BOD.2v7=2.7v
-menu.BOD.2v7.bootloader.high_fuses=0xd5
-menu.BOD.4v3=4.3v
-menu.BOD.4v3.bootloader.high_fuses=0xd4
-menu.BOD.1v8=1.8v
-menu.BOD.1v8.bootloader.high_fuses=0xd6
-menu.BOD.disabled=Disabled
-menu.BOD.disabled.bootloader.high_fuses=0xd7
-menu.LTO.Os=Disabled (default)
+menu.variant.modelPB.build.mcu=atmega328pb
+menu.BOD.2v7=BOD 2.7V
+menu.BOD.2v7.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}101
+menu.BOD.4v3=BOD 4.3V
+menu.BOD.4v3.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}100
+menu.BOD.1v8=BOD 1.8V
+menu.BOD.1v8.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}110
+menu.BOD.disabled=BOD  disabled
+menu.BOD.disabled.bootloader.extended_fuses=0b1111{bootloader.cfd_bit}111
+menu.LTO.Os=LTO disabled
 menu.LTO.Os.compiler.c.extra_flags=
 menu.LTO.Os.compiler.c.elf.extra_flags=
 menu.LTO.Os.compiler.cpp.extra_flags=
 menu.LTO.Os.ltoarcmd=avr-ar
-menu.LTO.Os_flto=Enabled
-menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto
-menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto
-menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto
+menu.LTO.Os_flto=LTO enabled
+menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
 menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
 menu.clock.16MHz_external=16 MHz external
-menu.clock.16MHz_external.upload.port=UART0
 menu.clock.16MHz_external.upload.speed=115200
 menu.clock.16MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.16MHz_external.build.f_cpu=16000000L
 menu.clock.20MHz_external=20 MHz external
-menu.clock.20MHz_external.upload.port=UART0
 menu.clock.20MHz_external.upload.speed=115200
 menu.clock.20MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.20MHz_external.build.f_cpu=20000000L
 menu.clock.18_432MHz_external=18.432 MHz external
-menu.clock.18_432MHz_external.upload.port=UART0
 menu.clock.18_432MHz_external.upload.speed=115200
 menu.clock.18_432MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.18_432MHz_external.build.f_cpu=18432000L
 menu.clock.12MHz_external=12 MHz external
-menu.clock.12MHz_external.upload.port=UART0
 menu.clock.12MHz_external.upload.speed=57600
 menu.clock.12MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.12MHz_external.build.f_cpu=12000000L
 menu.clock.8MHz_external=8 MHz external
-menu.clock.8MHz_external.upload.port=UART0
 menu.clock.8MHz_external.upload.speed=38400
 menu.clock.8MHz_external.bootloader.low_fuses=0b1111{bootloader.cksel_bits}
 menu.clock.8MHz_external.build.f_cpu=8000000L
 menu.clock.8MHz_internal=8 MHz internal
-menu.clock.8MHz_internal.upload.port=UART0
 menu.clock.8MHz_internal.upload.speed=38400
 menu.clock.8MHz_internal.bootloader.low_fuses=0xe2
 menu.clock.8MHz_internal.build.f_cpu=8000000L
 menu.clock.1MHz_internal=1 MHz internal
-menu.clock.1MHz_internal.upload.port=UART0
 menu.clock.1MHz_internal.upload.speed=9600
 menu.clock.1MHz_internal.bootloader.low_fuses=0x62
 menu.clock.1MHz_internal.build.f_cpu=1000000L
 runtime.ide.path=C:\Program Files (x86)\Arduino
 runtime.os=windows
-build.system.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1\system
-runtime.ide.version=10803
+build.system.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3\system
+runtime.ide.version=10809
 target_package=MiniCore
 target_platform=avr
 runtime.hardware.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr
-originalid=168
+originalid=328
 intellisense.tools.path={runtime.tools.avr-gcc.path}\
 intellisense.include.paths={intellisense.tools.path}avr\include;{intellisense.tools.path}avr\include\avr;{intellisense.tools.path}lib\gcc\avr\4.8.1\include;{intellisense.tools.path}lib\gcc\avr\4.9.2\include;{intellisense.tools.path}lib\gcc\avr\4.9.3\include;
 tools.atprogram.cmd.path=%AVRSTUDIO_EXE_PATH%\atbackend\atprogram
@@ -699,7 +789,18 @@ tools.atprogram.erase.params.quiet=-q
 tools.atprogram.bootloader.params.verbose=-v
 tools.atprogram.bootloader.params.quiet=-q
 tools.atprogram.bootloader.pattern="{cmd.path}" -d {build.mcu} {bootloader.verbose}  program -c -f "{runtime.ide.path}\hardware\arduino\avr\bootloaders\{bootloader.file}"
-version=2.0.0
+ide.compiler_flags_no_opt=-Og
+tools.gdbstub.cmd=avr-gdb.exe
+tools.gdbstub.path={runtime.tools.avr-gcc.path}/bin
+tools.gdbstub.debug.args="{{{build.path}/{build.project_name}.elf}}" -ex "target remote \\.\{serial.port}"
+debug_menu.hwdebugger.gdbstub=GDB Stub
+debug_menu.hwdebugger.gdbstub.debug.tool=gdbstub
+meta_gdbstub.sentence=This debugger requires the avr-debugger library (by Jan Dolinay) be included in the project (install via Library Manager or from GitHub).
+meta_gdbstub.comment=To use this debugger, include the avr-debugger library, add 'debug_init();' to the setup(), and 'breakpoint();' to the top of 'loop()'. Set vMicro &gt; Debugger &gt; 'Compiler Optimization' to 'No Project', 'No Project + Libraries' or 'None' when debugging (NOTE: This might cause compilation errors with certain code such as HardwareSerial.)
+meta_gdbstub.image.connect=https://www.visualmicro.com/pics/Debug-Help-Uno_USBOnly.png
+meta_gdbstub.image.operation=https://www.visualmicro.com/pics/Debug-Break-Uno-GDBStub-VSOnly.png
+meta_gdbstub.reference.usage.url=https://www.visualmicro.com/page/User-Guide.aspx?doc=Arduino-gdb-Tutorial.html
+version=2.0.3
 compiler.warning_flags=-w
 compiler.warning_flags.none=-w
 compiler.warning_flags.default=
@@ -768,7 +869,7 @@ tools.avrdude.bootloader.pattern="{cmd.path}" "-C{config.path}" -v -p{build.mcu}
 tools.avrdude_remote.upload.pattern=/usr/bin/run-avrdude /tmp/sketch.hex {upload.verbose} -p{build.mcu}
 build.usb_manufacturer="Unknown"
 build.usb_flags=-DUSB_VID={build.vid} -DUSB_PID={build.pid} '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'
-vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\voixllox.vig\Micro Platforms\arduino16x
+vm.platform.root.path=C:\Program Files (x86)\Atmel\Studio\7.0\Extensions\pwm1uafe.upm\Micro Platforms\arduino16x
 tools.avrdude.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
 tools.avrdude.program.verify=
 tools.avrdude.upload.network_pattern="{network_cmd}" -address {serial.port} -port {upload.network.port} -sketch "{build.path}/{build.project_name}.hex" -upload {upload.network.endpoint_upload} -sync {upload.network.endpoint_sync} -reset {upload.network.endpoint_reset} -sync_exp {upload.network.sync_return}
@@ -809,12 +910,20 @@ parallel.program.tool=avrdude
 parallel.program.extra_params=-F
 arduinoasisp.name=Arduino as ISP
 arduinoasisp.communication=serial
-arduinoasisp.protocol=arduino
+arduinoasisp.protocol=stk500v1
 arduinoasisp.speed=19200
-arduinoasisp.program.protocol=arduino
+arduinoasisp.program.protocol=stk500v1
 arduinoasisp.program.speed=19200
 arduinoasisp.program.tool=avrdude
 arduinoasisp.program.extra_params=-P{serial.port} -b{program.speed}
+arduinoasispatmega32u4.name=Arduino as ISP (ATmega32U4)
+arduinoasispatmega32u4.communication=serial
+arduinoasispatmega32u4.protocol=arduino
+arduinoasispatmega32u4.speed=19200
+arduinoasispatmega32u4.program.protocol=arduino
+arduinoasispatmega32u4.program.speed=19200
+arduinoasispatmega32u4.program.tool=avrdude
+arduinoasispatmega32u4.program.extra_params=-P{serial.port} -b{program.speed}
 usbGemma.name=Arduino Gemma
 usbGemma.protocol=arduinogemma
 usbGemma.program.tool=avrdude
@@ -859,28 +968,48 @@ micronucleusprog.communication=usb
 micronucleusprog.protocol=micronucleus
 micronucleusprog.program.tool={runtime.tools.micronucleus.path}/micronucleus
 micronucleusprog.program.extra_params=-Pusb
-runtime.tools.avr-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
-runtime.tools.avr-gcc-5.4.0-atmel3.6.1-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
-runtime.tools.avrdude.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino14
-runtime.tools.avrdude-6.3.0-arduino14.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino14
-runtime.tools.arduinoOTA.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.2.1
+runtime.tools.avr-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino5
+runtime.tools.avr-gcc-7.3.0-atmel3.6.1-arduino5.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino5
+runtime.tools.avrdude.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17
+runtime.tools.avrdude-6.3.0-arduino17.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17
+runtime.tools.arduinoOTA.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.3.0
+runtime.tools.arduinoOTA-1.3.0.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.3.0
+runtime.tools.arduinoOTA-1.1.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\tools\arduinoOTA\1.1.1
 runtime.tools.arduinoOTA-1.2.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.2.1
-runtime.tools.arduinoOTA-1.1.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\arduinoOTA\1.1.1
-runtime.tools.avrdude-6.3.0-arduino9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino9
+runtime.tools.avrdude-6.3.0-arduino14.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avrdude\6.3.0-arduino14
+runtime.tools.avrdude-6.3.0-arduino9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\tools\avrdude\6.3.0-arduino9
 runtime.tools.avr-gcc-4.8.1-arduino5.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.8.1-arduino5
-runtime.tools.avr-gcc-4.9.2-atmel3.5.4-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.4-arduino2
-runtime.tools.esptool.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\0.4.13
+runtime.tools.avr-gcc-4.9.2-atmel3.5.4-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\tools\avr-gcc\4.9.2-atmel3.5.4-arduino2
+runtime.tools.avr-gcc-5.4.0-atmel3.6.1-arduino2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
+runtime.tools.CMSIS.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\CMSIS\5.5.1
+runtime.tools.CMSIS-5.5.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\CMSIS\5.5.1
+runtime.tools.esptool.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\2.5.0-3-20ed2b9
+runtime.tools.esptool_py.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\esptool_py\2.6.1
+runtime.tools.esptool_py-2.6.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\esptool_py\2.6.1
 runtime.tools.esptool-0.4.13.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\0.4.13
+runtime.tools.esptool-2.3.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\esptool\2.3.1
+runtime.tools.esptool-2.5.0-3-20ed2b9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\esptool\2.5.0-3-20ed2b9
 runtime.tools.micronucleus.path=C:\Users\Kostya\AppData\Local\arduino15\packages\digistump\tools\micronucleus\2.0a4
 runtime.tools.micronucleus-2.0a4.path=C:\Users\Kostya\AppData\Local\arduino15\packages\digistump\tools\micronucleus\2.0a4
-runtime.tools.mkspiffs.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\0.2.0
+runtime.tools.mkspiffs.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\2.5.0-3-20ed2b9
 runtime.tools.mkspiffs-0.2.0.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\0.2.0
-runtime.tools.xtensa-lx106-elf-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2
+runtime.tools.mkspiffs-0.2.3.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\mkspiffs\0.2.3
+runtime.tools.mkspiffs-2.5.0-3-20ed2b9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\mkspiffs\2.5.0-3-20ed2b9
+runtime.tools.python.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\python\3.7.2-post1
+runtime.tools.python-3.7.2-post1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\python\3.7.2-post1
+runtime.tools.STM32Tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\STM32Tools\1.3.2
+runtime.tools.STM32Tools-1.3.2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\STM32Tools\1.3.2
+runtime.tools.xpack-arm-none-eabi-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\xpack-arm-none-eabi-gcc\9.2.1-1.1
+runtime.tools.xpack-arm-none-eabi-gcc-9.2.1-1.1.path=C:\Users\Kostya\AppData\Local\arduino15\packages\STM32\tools\xpack-arm-none-eabi-gcc\9.2.1-1.1
+runtime.tools.xtensa-esp32-elf-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0
+runtime.tools.xtensa-esp32-elf-gcc-1.22.0-80-g6c4433a-5.2.0.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp32\tools\xtensa-esp32-elf-gcc\1.22.0-80-g6c4433a-5.2.0
+runtime.tools.xtensa-lx106-elf-gcc.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\2.5.0-3-20ed2b9
 runtime.tools.xtensa-lx106-elf-gcc-1.20.0-26-gb404fb9-2.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2
-runtime.vm.boardinfo.id=MiniCore_168
-runtime.vm.boardinfo.name=MiniCore_168
-runtime.vm.boardinfo.desc=ATmega168
-runtime.vm.boardinfo.src_location=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1
+runtime.tools.xtensa-lx106-elf-gcc-2.5.0-3-20ed2b9.path=C:\Users\Kostya\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\2.5.0-3-20ed2b9
+runtime.vm.boardinfo.id=MiniCore_328
+runtime.vm.boardinfo.name=MiniCore_328
+runtime.vm.boardinfo.desc=ATmega328
+runtime.vm.boardinfo.src_location=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3
 ide.hint=Use installed IDE. Provides built-in hardware, reference/help and libraries.
 ide.location.key=Arduino16x
 ide.location.ide.winreg=Arduino 1.6.x Application
@@ -924,23 +1053,40 @@ ssh.user.name=root
 ssh.user.default.password=arduino
 ssh.host.wwwfiles.path=/www/sd
 build.working_directory={runtime.ide.path}\java\bin
+ide.debug_menu.debugger_type=Debug
+ide.debug_menu.debugger_type.none=Off
+ide.debug_menu.none.debug.tool=no_debug
+ide.debug_menu.debugger_type.universal=Serial
+ide.debug_menu.universal.debug.tool=auto
+ide.debug_menu.debugger_type.hwdebugger=Hardware
+ide.debug_menu.hwdebugger=Debugger
+ide.debug_menu.hwdebugger.custom_debugger=Manual/Custom
+ide.debug_menu.hwdebugger.custom_debugger.debug.tool=dbg_external
+ide.meta_custom_debugger.sentence=Provides a build that includes debug defines and will launch a custom debugger if one is provided.
+ide.meta_custom_debugger.paragraph=This is option is for advanced use. It is recommended that a pre-configured debugger be selected when available in this list. Usage: Optionally add a customer debugger to the project. A 'debugger_launch.json' file shares the same command syntax that is used by the VsCode debugger. Custom debuggers can be targeted at a board and/or variant and/or configuration name. IE: [variant].[configuration_name][.]debugger_launch.json
+ide.meta_custom_debugger.reference.usage.url=https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md#customlaunchsetupcommands
+ide.meta_custom_debugger.reference.connect.url=https://docs.microsoft.com/en-us/visualstudio/debugger/create-custom-views-of-native-objects?view=vs-2019
+ide.debug_menu.vm_disable_optimization=Disable Optimization
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_default=Default Optimization
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_proj=No Project  Optimization
+ide.debug_menu.vm_disable_opt_proj.vm_disable_opt_project={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_proj_libs=No Project + Libraries Optimization
+ide.debug_menu.vm_disable_opt_proj_libs.vm_disable_opt_project={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_opt_proj_libs.vm_disable_opt_libraries={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_optimization.vm_disable_opt_all=No Optimization
+ide.meta_vm_disable_opt_all.sentence=Disable compiler optimization for all sources:- Project, Library and Platform.
+ide.meta_vm_disable_opt_all.comment=After switching between 'No Optimization' and other optimization values, please click "Solution Clean" or switch off (or cycle) 'vMicro&gt;Compiler&gt;Shared Cache For Cores'. NOTE: Changing optimization settings can cause build errors or result in overly large programs.
+ide.debug_menu.vm_disable_opt_all.vm_disable_opt_project={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_opt_all.vm_disable_opt_libraries={ide.compiler_flags_no_opt}
+ide.debug_menu.vm_disable_opt_all.vm_disable_opt_core={ide.compiler_flags_no_opt}
 ide.appid=arduino16x
 location.sketchbook=C:\Users\Kostya\Documents\Arduino
-build.core.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1\cores\MCUdude_corefiles
+build.core.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3\cores\MCUdude_corefiles
 vm.core.include=arduino.h
-vm.boardsource.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1
-runtime.platform.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.1
+vm.boardsource.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3
+runtime.platform.path=C:\Users\Kostya\AppData\Local\arduino15\packages\MiniCore\hardware\avr\2.0.3
 vm.platformname.name=avr
 build.arch=AVR
-build.project_name=ScaleCorrector1.ino
-build.project_path=C:\Users\Kostya\Documents\Solution\Scale Corrector\Arduino\ScaleCorrector1
-sketch_path=C:\Users\Kostya\Documents\Solution\Scale Corrector\Arduino\ScaleCorrector1
-ProjectDir=C:\Users\Kostya\Documents\Solution\Scale Corrector\Arduino\ScaleCorrector1\
-build.path=C:\Users\Kostya\AppData\Local\Temp\VMBuilds\ScaleCorrector1\pro_8MHzatmega168\Debug
-builder.noino=false
-build.architecture=5.4.0-atmel3.6.1-arduino2
-vmresolved.compiler.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2\bin\
-vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\5.4.0-atmel3.6.1-arduino2
 </arduino.board.property_bag>
         <arduino.build.mcu>
         </arduino.build.mcu>
@@ -951,7 +1097,8 @@ vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\t
         </arduino.upload.protocol>
         <arduino.upload.speed>
         </arduino.upload.speed>
-        <arduino.upload.maximum_size>15872</arduino.upload.maximum_size>
+        <arduino.upload.maximum_size>
+        </arduino.upload.maximum_size>
         <visualmicro.application.name>arduino16x</visualmicro.application.name>
         <visualmicro.package.name>MiniCore</visualmicro.package.name>
         <visualmicro.platform.name>avr</visualmicro.platform.name>
@@ -959,6 +1106,8 @@ vmresolved.tools.path=C:\Users\Kostya\AppData\Local\arduino15\packages\arduino\t
         <vm.programmer_name>atmel_studio_device_programming</vm.programmer_name>
         <custom_MiniCore_168_bootloader>false</custom_MiniCore_168_bootloader>
         <custom_MiniCore_168_variant>modelP</custom_MiniCore_168_variant>
+        <custom_MiniCore_328_clock>8MHz_internal</custom_MiniCore_328_clock>
+        <custom_MiniCore_328_BOD>disabled</custom_MiniCore_328_BOD>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>

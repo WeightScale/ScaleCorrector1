@@ -54,7 +54,7 @@ void CoreClass::doCalibration(){
 	}
 	core_value.corrMtoP = p0;
 	CORE.reset();	
-	core_value.l_adc -= core_value.offset;
+	/*core_value.l_adc -= core_value.offset;
 	float fp = 0,fm = 0, f = 0;
 	for(int i=0; i<FACTOR_MAX; i++){
 #if FACTOR_PLAN == FACTOR_5_10_15_20
@@ -83,12 +83,12 @@ void CoreClass::doCalibration(){
 				fm=-0.01;
 			break;
 			case 1:
-				fp=0.03;
-				fm=-0.03;
+				fp=0.035;
+				fm=-0.040;
 			break;
 			case 2:
-				fp=0.05;
-				fm=-0.05;
+				fp=0.055;
+				fm=-0.062;
 			break;
 		}
 #endif		
@@ -97,7 +97,7 @@ void CoreClass::doCalibration(){
 		//core_value.factorP[i] = float(float(core_value.corrMtoP)* f) / float(core_value.l_adc);
 		core_value.factorP[i] = float(float(core_value.corrMtoP)* fp) / float(core_value.l_adc);
 		core_value.factorM[i] = float(float(core_value.corrMtoP)* fm) / float(core_value.l_adc);
-	}	
+	}*/	
 	eeprom_update_block (&core_value, &core_value_eep, sizeof(value_t));
 	while(1){
 		switch (remoteController.getCommand(3000)){
@@ -225,7 +225,8 @@ void CoreClass::doPlus(){
 	POT_PLUS.twitch(10, 2000);																		///< Для визуального определения что вошли в корректировку плюсования.
 	POT_MINUS.setResistance(0);
 	while(1){			
-		int res = float(hx711.read() - core_value.offset) * (core_value.factorP[i] + core_value.factorO);		///< Вычисляем значение сопротивления для корекции.
+		//int res = float(hx711.read() - core_value.offset) * (core_value.factorP[i] + core_value.factorO);		///< Вычисляем значение сопротивления для корекции.
+		int res = float(hx711.read() - core_value.offset) * core_value.factorP[i];
 		//res = abs(res);
 		//res = constrain(res, 0, 255);																///< Чтобы не вышло из диапазона.
 		//POT_PLUS.setResistance(res);
@@ -239,9 +240,9 @@ void CoreClass::doPlus(){
 			POT_PLUS.setResistance(r);
 			POT_MINUS.setResistance(0);
 		}					
-		if (remoteController.readBitsFromPort()){
-			switch(remoteController.getBits()){
-				case ACTION_BUTTON_A:
+		//if (remoteController.readBitsFromPort()){
+			switch(remoteController.getCommand(4000)){
+				case BUTTON_A:
 					int t;
 					if (++i >=FACTOR_MAX){
 						i = 0;
@@ -249,14 +250,45 @@ void CoreClass::doPlus(){
 					t = (i+1) * 10;
 					POT_PLUS.twitch(t, 2000);														///< Для визуального определения что вышли в корректировку плюсования.					
 				break;
-				case ACTION_BUTTON_C:
+				case BUTTON_D_delay:
+					{												
+						unsigned char p = (char)res;
+						bool f = true;
+						POT_PLUS.twitch(10, 1000);
+						while(remoteController.readBitVT()){};
+						while(f){
+							if (remoteController.readBitsPortToTime(2000)){
+								switch(remoteController.getBits()){
+									case ACTION_BUTTON_A:
+										POT_PLUS.setResistance(++p);
+									break;
+									case ACTION_BUTTON_B:
+										POT_PLUS.setResistance(--p);
+									break;
+									case ACTION_BUTTON_D:
+										POT_PLUS.twitch(10, 1000);
+										int pot = POT_PLUS.getResistance();
+										core_value.r_adc = hx711.read();
+										core_value.factorP[i] = float(pot) / float(core_value.r_adc - core_value.offset);
+										eeprom_update_block (&core_value, &core_value_eep, sizeof(value_t));
+										POT_PLUS.setResistance(0);
+										POT_PLUS.twitch(10, 1000);
+										POT_PLUS.setResistance(pot);
+										f = false;
+									break;
+								}
+							}
+						}	
+					}
+				break;
+				case BUTTON_C:
 					POT_PLUS.twitch(10, 500);														///< Для визуального определения что вышли в корректировку плюсования.
 					POT_PLUS.reset();
 					return;
-				case ACTION_BUTTON_B:
+				case BUTTON_B:
 					goto _minus;
 			}			
-		}				
+		//}				
 	}
 	_minus: ;
 	{
@@ -269,7 +301,8 @@ void CoreClass::doMinus(){
 	POT_MINUS.twitch(10, 2000);														///< Для визуального определения что вошли в корректировку минусования.
 	POT_PLUS.setResistance(0);
 	while(1){
-		int res = float(hx711.read() - core_value.offset) * (core_value.factorM[i] + core_value.factorO);///< Вычисляем значение сопротивления для корекции.
+		//int res = float(hx711.read() - core_value.offset) * (core_value.factorM[i] + core_value.factorO);///< Вычисляем значение сопротивления для корекции.
+		int res = float(hx711.read() - core_value.offset) * core_value.factorM[i];
 		//res = abs(res);			
 		//res = constrain(res, 0, 255);												///< Чтобы не вышло из диапазона.
 		//POT_MINUS.setResistance(res);
@@ -283,9 +316,9 @@ void CoreClass::doMinus(){
 			POT_PLUS.setResistance(r);
 			POT_MINUS.setResistance(0);
 		}
-		if (remoteController.readBitsFromPort()){									///< Выходим из коректировки.
-			switch(remoteController.getBits()){
-				case ACTION_BUTTON_B:
+		//if (remoteController.readBitsFromPort()){									///< Выходим из коректировки.
+			switch(remoteController.getCommand(4000)){
+				case BUTTON_B:
 				int t;
 					if (++i >=FACTOR_MAX){
 						i = 0;
@@ -293,14 +326,65 @@ void CoreClass::doMinus(){
 					t = (i+1) * 10;
 					POT_MINUS.twitch(t, 2000);										///< Для визуального определения что вышли в корректировку минусования.
 				break;
-				case ACTION_BUTTON_C:					
+				case BUTTON_D_delay:
+					{
+						int p = (char)res;
+						bool f = true;
+						POT_MINUS.twitch(10, 1000);
+						while(remoteController.readBitVT()){};
+						while(f){
+							if (remoteController.readBitsPortToTime(2000)){
+								switch(remoteController.getBits()){
+									case ACTION_BUTTON_A:
+										--p;										
+										//POT_MINUS.setResistance(--p);
+										
+									break;
+									case ACTION_BUTTON_B:
+										++p;
+										//POT_MINUS.setResistance(++p);
+									break;
+									case ACTION_BUTTON_D:
+										POT_MINUS.twitch(10, 1000);
+										//int pot = (POT_MINUS.getResistance()* (-1));
+										core_value.r_adc = hx711.read();
+										//core_value.factorM[i] = float(pot) / float(core_value.r_adc - core_value.offset);
+										core_value.factorM[i] = float(p) / float(core_value.r_adc - core_value.offset);
+										eeprom_update_block (&core_value, &core_value_eep, sizeof(value_t));
+										POT_MINUS.setResistance(0);
+										POT_MINUS.twitch(10, 1000);
+										//POT_MINUS.setResistance(pot);
+										f = false;
+									break;
+								}
+								if(p < 0){
+									if( p < -255){
+										p = -255;	
+									}
+									int p_res = abs(p);
+								//int r = constrain(p_res, 0, 255);
+									POT_MINUS.setResistance(p_res);
+									POT_PLUS.setResistance(0);									
+								}else{
+									if( p > 255){
+										p = 255;
+									}
+									//int r = constrain(p, 0, 255);
+									POT_MINUS.setResistance(0);
+									POT_PLUS.setResistance(p);			
+								}
+							}							
+						}	
+					}		
+				break;
+				case BUTTON_C:					
 					POT_MINUS.twitch(10, 500);										///< Для визуального определения что вышли в корректировку минусования.
 					POT_MINUS.reset();
 				return;
-				case ACTION_BUTTON_A:
-					goto _plus;	
+				case BUTTON_A:
+					goto _plus;
 			}			
-		}
+		//}
 	}
 	_plus: ;
 	{

@@ -26,13 +26,31 @@
 #define PIN_D3 3
 #define PIN_VT 4  /*! PORD4*/
 
-#define PLUS_CALIBRATION	12	///< Нажаты две кнопки C and A
-#define MINUS_CALIBRATION	9	///< Нажаты две кнопки C and B
-#define OFFSET_CALIBRATION	10	///< Нажаты две кнопки C and D калибровука отклонения от реального веса
-#define ACTION_BUTTON_A		4	///< Нажата кнопка
-#define ACTION_BUTTON_B		1	///< Нажата кнопка
-#define ACTION_BUTTON_C		8	///< Нажата кнопка
-#define ACTION_BUTTON_D		2	///< Нажата кнопка
+//#define PLUS_CALIBRATION	12	///< Нажаты две кнопки C and A
+//#define MINUS_CALIBRATION	9	///< Нажаты две кнопки C and B
+//#define OFFSET_CALIBRATION	10	///< Нажаты две кнопки C and D калибровука отклонения от реального веса
+
+/*---A--B--
+  --C--D---*/
+//#define PULT_0
+/*---C--A--
+  --D--B---*/
+#define PULT_1
+
+
+#ifdef PULT_0
+	#define ACTION_BUTTON_A		4	///< Нажата кнопка
+	#define ACTION_BUTTON_B		1	///< Нажата кнопка
+	#define ACTION_BUTTON_C		8	///< Нажата кнопка
+	#define ACTION_BUTTON_D		2	///< Нажата кнопка
+#elif defined(PULT_1)
+	#define ACTION_BUTTON_A		1	///< Нажата кнопка
+	#define ACTION_BUTTON_B		2	///< Нажата кнопка
+	#define ACTION_BUTTON_C		4	///< Нажата кнопка
+	#define ACTION_BUTTON_D		8	///< Нажата кнопка
+#endif
+
+
 
 /*! A reference to an IID */
 #define MASK_PULT_PIN		B00001111 ///< Маска пинов данных кнопок пульта
